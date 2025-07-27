@@ -30,11 +30,11 @@ template <typename T, typename E>
 inline bool pretty_print(std::ostream& stream, const cpp::result<T,E>& value) {
     if (value.has_value()) {
         if constexpr (!std::is_void_v<T>) {
-            stream << "value: ";
+            stream << "result{value: ";
             pretty_print(stream, *value);
         } else {
             (void)(value);
-            stream << "void";
+            stream << "result{void";
         }
     } else {
         stream << "result{error: ";
